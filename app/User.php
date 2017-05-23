@@ -49,13 +49,6 @@ class User extends Authenticatable
 
     public function setPermissionsAttribute($value)
     {
-        $this->attributes['permissions'] = octdec(implode(array_map(
-            function ($permission) {
-                return array_reduce(str_split($permission), function ($carry, $value) {
-                    return $carry + $value;
-                }, 0);
-            },
-            str_split(strtr($value, 'rwx-', '4210'), 3)
-        )));
+        $this->attributes['permissions'] = bindec(strtr($value, 'rwx-', '1110'));
     }
 }

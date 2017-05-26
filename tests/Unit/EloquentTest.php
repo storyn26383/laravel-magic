@@ -8,7 +8,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ElequentTest extends TestCase
+class EloquentTest extends TestCase
 {
     use DatabaseMigrations;
 

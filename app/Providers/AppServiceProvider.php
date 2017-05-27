@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Num;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Collection;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Collection::macro('product', function () {
+            return array_product($this->items);
+        });
     }
 
     /**
@@ -23,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(Num::class, function () {
+            return new Num('v0.0.1');
+        });
     }
 }
